@@ -10,12 +10,11 @@ const Context = ({ children }) => {
     id: faker.string.uuid(),
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
-    image: faker.image.urlLoremFlickr(),
-    inStock: faker.string.numeric([0, 3, 5, 6, 7]),
+    image: faker.image.urlLoremFlickr({ category: "business" }),
+    inStock: faker.helpers.arrayElements([0, 3, 5, 6, 7]),
     fastDelivery: faker.datatype.boolean(),
-    rating: faker.string.numeric([1, 2, 3, 4, 5]),
+    rating: faker.helpers.arrayElements([1, 2, 3, 4, 5]),
   }));
-  console.log(products);
 
   const [state, dispatch] = useReducer(cartReducer, {
     products: products,
